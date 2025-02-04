@@ -24,8 +24,11 @@ status-version 2
 • **Connection duration:** For disconnections, the script provides the connection duration.
 
 
-![image](https://github.com/user-attachments/assets/52668b7f-1dfa-4141-9730-52cc2064b6b1)
+![image](https://github.com/user-attachments/assets/9fadf19e-8d50-478b-a4cd-497fbace6962)
 
 
-![image](https://github.com/user-attachments/assets/f3f36026-814f-4a48-9c94-25c05799618d) ![image](https://github.com/user-attachments/assets/4316ba26-f513-40fe-9011-f18fb9bd43a4)
+
+![image](https://github.com/user-attachments/assets/ce8dc7f6-cf62-499f-b50b-0f8c5c0931fe)
+![image](https://github.com/user-attachments/assets/63d1440e-ef46-4733-836b-99d21ebae416)
+
 
