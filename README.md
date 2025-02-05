@@ -1,34 +1,28 @@
-## OpenVPN Server Monitor
-
-***How To Use?***
-
-Edit Your OpenVPN Configuration File: (Normally Located In: /etc/openvpn/server/server.conf)
-
-Add These To The Server.conf File:
-
-status /etc/openvpn/server/status.log
-
-status-version 2
+## OpenVPN Server Monitor V1.1 - 05/02/25
 
 
 ## Features
 
-• **Real-Time Monitoring:** Monitors the OpenVPN server status log for any changes to user connections.
+• **Real-Time Monitoring:** Monitors The OpenVPN Server Status Log For Any Changes To User Connections.
 
-• **Discord Notifications:** Sends notifications to a specified Discord channel using webhooks for both connection and disconnection events.
+• **Discord Notifications:** Sends Notifications To A Specified Discord Channel Using Webhooks For Both Connection And Disconnection Events.
 
-• **User Connection Tracking:** Keeps track of total connections per user and records connection times.
+• **User Connection Tracking:** Keeps Track Of Total Connections Per User And Records Connection Times.
 
-• **Server Statistics:** Displays real-time server stats such as CPU load, available disk space, and memory usage.
+• **Server Uptime:** Displays Real-Time Total Server Uptime.
 
-• **Connection duration:** For disconnections, the script provides the connection duration.
+• **Terminal Output:** Displays Critial Information Via The Terminal.
 
-
-![image](https://github.com/user-attachments/assets/9fadf19e-8d50-478b-a4cd-497fbace6962)
-
+• **Connection Duration:** For Disconnections, The Script Provides The Total Connection Duration For The Selected User.
 
 
-![image](https://github.com/user-attachments/assets/ce8dc7f6-cf62-499f-b50b-0f8c5c0931fe)
-![image](https://github.com/user-attachments/assets/63d1440e-ef46-4733-836b-99d21ebae416)
+![image](https://github.com/user-attachments/assets/b7f4ff57-3a5f-4b7f-b639-3f552d82afbd)
+
+
+
+
+
+![image](https://github.com/user-attachments/assets/5c0ae709-478d-4212-a61b-991a5ccba42d)
+
 
 
