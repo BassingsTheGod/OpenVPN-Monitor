@@ -1,0 +1,9 @@
+OpenVPN Monitor Version 1.1 - 05/02/25
+
++ Added Window Title To All Standalone SSH Clients.
++ Added Better Inputting For The Discord Webhook, (/root/webhook.txt)
++ Added Better Inputting For The Uptime Monitor Link, (/root/uptimemonitorlink.txt)
++ Added Server Uptime To Be Featured On The Discord Webhook.
++ Added Debug For The Discord Webhook Link & Uptime Monitor Link.
+
+- Removed Server Statistics From The Terminal Output Due To Static Values.
