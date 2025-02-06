@@ -2,7 +2,7 @@
 (Normally Located In: /etc/openvpn/server/server.conf)
 
 Add These To The Bottom Of Your Server.conf File:
-status /etc/openvpn/server/status.log
+status /etc/openvpn/server/status.log 1
 status-version 2
 
 2. Create The Status.log File Within The /etc/openvpn/server Path.
