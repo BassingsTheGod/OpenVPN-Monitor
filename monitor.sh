@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -ne "\033]0;OpenVPN Monitor V1.1 | By Bassings\007"
+echo -ne "\033]0;OpenVPN Monitor V1.1 05/02/25 | By Bassings\007"
 
 STATUS_LOG="/etc/openvpn/server/status.log"
 TEMP_USER_LIST="/tmp/current_users.txt"
