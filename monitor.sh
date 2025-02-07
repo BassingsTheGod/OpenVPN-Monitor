@@ -30,6 +30,13 @@ else
     echo -e "\033[31mFailed\033[0m to find $UPTIME_MONITOR_FILE"
 fi
 
+if [[ -f "$STATUS_LOG" ]]; then
+    echo -e "\033[32mSuccessfully\033[0m hooked to $STATUS_LOG"
+else
+    echo -e "\033[31mFailed\033[0m to hook to $STATUS_LOG"
+    exit 1
+fi
+
 get_server_uptime() {
     uptime -p | sed 's/up //'
 }
