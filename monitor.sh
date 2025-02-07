@@ -68,10 +68,10 @@ send_webhook() {
     fi
     message+="],
             \"image\": {
-                \"url\": \"https://i.imgur.com/m2cvsRt.gif\"
+                \"url\": \"https://i.imgur.com/m2cvsRt.gif\" 
             },
-            \"footer\": {\"text\": \"OpenVPN Server Notification\"},
-            \"timestamp\": \"$(date --utc +%FT%TZ)\"
+            \"footer\": {\"text\": \"OpenVPN Monitor V1.1\"},
+            \"timestamp\": \"$(date --utc +%FT%TZ)\" 
         } ]
     }"
 
@@ -84,29 +84,13 @@ send_webhook() {
     fi
 }
 
-get_cpu_load() {
-    awk '{print $1}' /proc/loadavg
-}
-
-get_available_disk_space() {
-    df -h / | awk 'NR==2 {print $4}'
-}
-
-get_memory_usage() {
-    free -h | awk 'NR==2 {print $3 "/" $2}'
-}
-
-echo -e "\033[32mSuccessfully\033[0m hooked to /etc/openvpn/server/status.log"
-echo -e "Server Statistics:"
-echo -e "- CPU Load: $(get_cpu_load)"
-echo -e "- Available Disk Space: $(get_available_disk_space)"
-echo -e "- Memory Usage: $(get_memory_usage)"
-
 get_current_users() {
     grep "^CLIENT_LIST" "$STATUS_LOG" | while IFS=',' read -ra fields; do
         username="${fields[1]}"
         client_ip="${fields[2]}"
         echo "$username $client_ip"
+
+        echo "$username $client_ip" >> /root/users.txt
     done
 }
 
@@ -153,6 +137,22 @@ get_connection_duration() {
     fi
 }
 
+log_connection_history() {
+    local username="$1"
+    local client_ip="$2"
+    local event="$3"
+    local connection_duration="$4"
+    
+    local timestamp=$(date "+%Y-%m-%d %H:%M:%S")
+    
+    
+    if [[ "$event" == "Connected" ]]; then
+        echo "$timestamp - $event - Username: $username, IP: $client_ip" >> /root/history.txt
+    else
+        echo "$timestamp - $event - Username: $username, IP: $client_ip, Duration: $connection_duration" >> /root/history.txt
+    fi
+}
+
 detect_changes() {
     get_current_users > "$TEMP_USER_LIST"
 
@@ -164,6 +164,7 @@ detect_changes() {
             record_connection_time "$username"
             echo -e "\033[32mUser Connected: $username (IP: $client_ip, Total Connections: $total_connections)\033[0m"
             send_webhook "$username" "$client_ip" "$total_connections" "Connected"
+            log_connection_history "$username" "$client_ip" "Connected" ""
         done
 
         comm -23 <(sort "$PREVIOUS_USER_LIST") <(sort "$TEMP_USER_LIST") | while read -r line; do
@@ -173,6 +174,7 @@ detect_changes() {
             connection_duration=$(get_connection_duration "$username")
             echo -e "\033[31mUser Disconnected: $username (IP: $client_ip, Total Connections: $total_connections, Connection Duration: $connection_duration)\033[0m"
             send_webhook "$username" "$client_ip" "$total_connections" "Disconnected" "$connection_duration"
+            log_connection_history "$username" "$client_ip" "Disconnected" "$connection_duration"
         done
     fi
 
