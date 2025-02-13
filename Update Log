@@ -1,3 +1,17 @@
+OpenVPN Monitor Version 1.2 - 13/02/25
+
++ Added Script Compilation For Security.
++ Added Config File For More Simple Editing. (/root/config.txt)
++ Added Debugging For The Config File. (Missing Parameters Check)
++ Added Automatic Creation Of The Config File.
++ Added Faster Alert Times For Connect Events.
++ Added Improvements To Stability.
+
+Note: The Config File Includes Requirements Such As: Discord Webhook, Uptime Monitor & Server Location.
+
+
+-----------------------------------------------------------------------------------
+
 OpenVPN Monitor Version 1.1 - 05/02/25
 
 + Added Window Title To All Standalone SSH Clients.
