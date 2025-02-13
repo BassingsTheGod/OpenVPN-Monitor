@@ -1,28 +1,78 @@
-## OpenVPN Server Monitor V1.1 - 05/02/25
+## Features:
+**Monitors OpenVPN Connections:**
 
+- Tracks users who connect and disconnect from the OpenVPN server in real-time.
 
-## Features
+**Discord Webhook Notifications:**
 
-• **Real-Time Monitoring:** Monitors The OpenVPN Server Status Log For Any Changes To User Connections.
+- Sends connection and disconnection events to a Discord channel.
+ 
+    Username
 
-• **Discord Notifications:** Sends Notifications To A Specified Discord Channel Using Webhooks For Both Connection And Disconnection Events.
+    Real IP (Spoiler Hidden)
 
-• **User Connection Tracking:** Keeps Track Of Total Connections Per User And Records Connection Times.
+    Uptime Monitor Link
 
-• **Server Uptime:** Displays Real-Time Total Server Uptime.
+    Total Connections By The User
+    
+    Server Location
 
-• **Terminal Output:** Displays Critial Information Via The Terminal.
+    Server Uptime
+    
+    Connection Duration For Disconnections
 
-• **Connection Duration:** For Disconnections, The Script Provides The Total Connection Duration For The Selected User.
+    
+**Configuration File Handling (config.txt):**
 
+- Checks for the existence of /root/config.txt.
 
-![image](https://github.com/user-attachments/assets/b7f4ff57-3a5f-4b7f-b639-3f552d82afbd)
+  - Creates it if missing with:
+  
+     webhook= (Discord webhook URL)
+  
+     uptime_monitor= (Uptime monitor link)
 
+    server_location= (Server location)
+  
+ - Reads the webhook URL and uptime monitor link from the file.
 
+**Tracks User Connection Counts:**
 
+ - Logs how many times a user has connected.
+ - Logs Connection Durations:
 
+   - Records the start time of user sessions.
+   - Calculates and logs the session duration when a user disconnects.
+ 
+**Maintains Connection History:**
 
-![image](https://github.com/user-attachments/assets/5c0ae709-478d-4212-a61b-991a5ccba42d)
+ - Logs connection and disconnection events in /root/history.txt.
 
+**Detects Connection Changes:**
+
+ - Compares the current connected users to the previous state.
+ - Identifies new connections and disconnections.
+
+**Monitors OpenVPN Status Log:**
+
+ - Uses inotifywait to monitor /etc/openvpn/server/status.log for changes.
+ - Detects real-time user connection changes.
+
+**Error Handling and Logging:**
+
+ - Checks if status.log exists before proceeding.
+ - Provides success/error messages for configuration file handling and Discord webhook.
+
+**Uses Temporary Files for Tracking:**
+
+ - /tmp/current_users.txt – Stores currently connected users.
+
+ - /tmp/previous_users.txt – Stores previously connected users.
+
+ - /tmp/user_connection_counts.txt – Stores the number of times each user connected.
+
+ - /tmp/user_connection_times.txt – Stores connection start times.
+
+![image](https://github.com/user-attachments/assets/1a9e074f-9894-4253-a41f-b14e530239a5)
 
 
