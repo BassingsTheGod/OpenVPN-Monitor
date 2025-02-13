@@ -7,10 +7,9 @@ status-version 2
 
 2. Create The Status.log File Within The /etc/openvpn/server Path.
 
-3. Update Both webhook.txt & uptimemonitorlink.txt With The Desired Discord Webhook & Uptime Monitor Link. 
-
-4. Run The Script:
-screen bash monitor.sh
+2. Run The Script:
+chmod 777 *
+screen ./monitor
 
 -----------------------------------------------------------------------------------------------------------
 Common Issues & Fixes Below!
@@ -20,10 +19,7 @@ Fix: apt install jq -y
 
 Issue: "$'\r': command not found / syntax error near unexpected token `$'{\r''"
 Fix: apt install dos2unix -y
-Command: dos2unix monitor.sh
-
-Issue: "Failed to find /root/webhook.txt / Failed to find /root/uptimemonitorlink.txt"
-Fix: Create And Update The Required Files: webhook.txt & uptimemonitorlink.txt within the /root Directory.
+Command: dos2unix monitor
 
 Issue: "Error: inotifywait: command not found"
 Fix: apt install inotify-tools -y
