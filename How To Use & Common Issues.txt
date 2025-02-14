@@ -8,8 +8,7 @@ status-version 2
 2. Create The Status.log File Within The /etc/openvpn/server Path.
 
 2. Run The Script:
-chmod 777 *
-screen ./monitor
+screen bash monitor.sh
 
 -----------------------------------------------------------------------------------------------------------
 Common Issues & Fixes Below!
@@ -19,7 +18,7 @@ Fix: apt install jq -y
 
 Issue: "$'\r': command not found / syntax error near unexpected token `$'{\r''"
 Fix: apt install dos2unix -y
-Command: dos2unix monitor
+Command: dos2unix monitor.sh
 
 Issue: "Error: inotifywait: command not found"
 Fix: apt install inotify-tools -y
