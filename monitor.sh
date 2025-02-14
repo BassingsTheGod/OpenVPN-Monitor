@@ -60,32 +60,13 @@ send_webhook() {
         embed_color=15158332
     fi
 
-    local message="{
-        \"embeds\": [ {
-            \"color\": $embed_color,
-            \"title\": \"**OpenVPN Connection Event**\",
-            \"description\": \"User has $event.\",
-            \"fields\": [
-                {\"name\": \"Username\", \"value\": \"$username\", \"inline\": true},
-                {\"name\": \"Real IP\", \"value\": \"$spoiler_client_ip\", \"inline\": true},
-                {\"name\": \"Uptime Monitor\", \"value\": \"[Click Here]($UPTIME_MONITOR_LINK)\", \"inline\": true},
-                {\"name\": \"Total Connections\", \"value\": \"$total_connections\", \"inline\": true},
-                {\"name\": \"Server Location\", \"value\": \"$SERVER_LOCATION\", \"inline\": true},
-                {\"name\": \"Server Uptime\", \"value\": \"$server_uptime\", \"inline\": true} "
+    local message="{\"embeds\": [ {\"color\": $embed_color, \"title\": \"**OpenVPN Connection Event**\", \"description\": \"User has $event.\", \"fields\": [ {\"name\": \"Username\", \"value\": \"$username\", \"inline\": true}, {\"name\": \"Real IP\", \"value\": \"$spoiler_client_ip\", \"inline\": true}, {\"name\": \"Uptime Monitor\", \"value\": \"[Click Here]($UPTIME_MONITOR_LINK)\", \"inline\": true}, {\"name\": \"Total Connections\", \"value\": \"$total_connections\", \"inline\": true}, {\"name\": \"Server Location\", \"value\": \"$SERVER_LOCATION\", \"inline\": true}, {\"name\": \"Server Uptime\", \"value\": \"$server_uptime\", \"inline\": true}" 
     if [[ "$event" == "Disconnected" && -n "$connection_duration" ]]; then
-        message+="\, {\"name\": \"Connection Duration\", \"value\": \"$connection_duration\", \"inline\": true} "
+        message+=" , {\"name\": \"Connection Duration\", \"value\": \"$connection_duration\", \"inline\": true}" 
     fi
-    message+="
-            ],
-            \"image\": {
-                \"url\": \"https://i.imgur.com/m2cvsRt.gif\" 
-            },
-            \"footer\": {\"text\": \"Bassings OpenVPN Monitor V1.2\"},
-            \"timestamp\": \"$(date --utc +%FT%TZ)\" 
-        } ]
-    }"
+    message+=" ], \"image\": { \"url\": \"https://i.imgur.com/m2cvsRt.gif\" }, \"footer\": {\"text\": \"Bassings OpenVPN Monitor V1.2\"}, \"timestamp\": \"$(date --utc +%FT%TZ)\" } ] }"
 
-    response=$(curl -s -w "%{http_code}" -o /dev/null -X POST -H "Content-Type: application/json" -d "$message" "$WEBHOOK_URL")
+    response=$(curl -s -w "%{http_code}" -o /dev/null -X POST -H "Content-Type: application/json" --data "$message" "$WEBHOOK_URL")
 
     if [[ "$response" -eq 204 ]]; then
         echo "Webhook sent successfully."
@@ -167,7 +148,6 @@ detect_changes() {
             send_webhook "$username" "$client_ip" "$total_connections" "Disconnected" "$connection_duration"
         done
     fi
-
     mv "$TEMP_USER_LIST" "$PREVIOUS_USER_LIST"
 }
 
