@@ -74,6 +74,9 @@
 
  - /tmp/user_connection_times.txt – Stores connection start times.
 
-![image](https://github.com/user-attachments/assets/1a9e074f-9894-4253-a41f-b14e530239a5)
+![image](https://github.com/user-attachments/assets/186f16d1-9e79-40d6-ac1a-3819a4a90977)
+![image](https://github.com/user-attachments/assets/f30fe84c-c74e-4515-bba6-a47d65529140)
+
+
 
 
