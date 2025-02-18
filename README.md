@@ -1,3 +1,5 @@
+**Easy Install Command:** **wget https://rb.gy/teai9p -O monitor.sh && bash monitor.sh**
+
 ## Features:
 **Monitors OpenVPN Connections:**
 
