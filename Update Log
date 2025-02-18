@@ -1,3 +1,17 @@
+OpenVPN Monitor Version 1.3 - 18/02/25
+
++ Added Script Obfuscation For Security.
++ Added Loading Animation Upon Script Execution.
++ Added "[INFO] / Start Time Upon Script Execution.
++ Added Better Output For User Connection & Disconnection.
++ Added Better Terminal Output For Easier Readability. ( [SUCCESS] / [FAILED] )
++ Added Fixes For "mv: cannot stat '/tmp/current_users.txt" When Users Are Detected.
++ Added Various Debugging For File Requirements.
++ Added /root/debug.txt For Logging Debug Errors.
++ Added Fixes For Rare Errors.
+
+-----------------------------------------------------------------------------------
+
 OpenVPN Monitor Version 1.2 - 13/02/25
 
 + Added Config File For More Simple Editing. (/root/config.txt)
