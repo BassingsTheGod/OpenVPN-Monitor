@@ -62,6 +62,7 @@
 
  - Checks if status.log exists before proceeding.
  - Provides success/error messages for configuration file handling and Discord webhook.
+ - Logs all common errors within /root/debug.txt.
 
 **Uses Temporary Files for Tracking:**
 
